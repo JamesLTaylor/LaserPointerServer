@@ -1,0 +1,45 @@
+﻿<Window x:Class="LaserPointerServer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LaserPointerServer"
+        mc:Ignorable="d"
+        Title="Laser Pointer Server" 
+        Height="200" Width="320">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Height="auto" Margin="10,10,0,0" VerticalAlignment="Top" Width="auto" FlowDirection="LeftToRight" Orientation="Horizontal">
+            <Label Content="Server Address:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" FontWeight="Bold" />
+            <TextBox x:Name="tbAddress1" HorizontalAlignment="Center" Width="30" Height="25" Text="1" VerticalAlignment="Center" IsReadOnly="True"/>
+            <Label Content="." HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <TextBox x:Name="tbAddress2" HorizontalAlignment="Center" Width="30" Height="25" Text="1" VerticalAlignment="Center" IsReadOnly="True"/>
+            <Label Content="." HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <TextBox x:Name="tbAddress3" HorizontalAlignment="Center" Width="30" Height="25" Text="1" VerticalAlignment="Center" IsReadOnly="True"/>
+            <Label Content="." HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <TextBox x:Name="tbAddress4" HorizontalAlignment="Center" Width="30" Height="25" Text="1" VerticalAlignment="Center" IsReadOnly="True"/>
+        </StackPanel>
+
+        <Grid Grid.Column="0" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+        
+            <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Height="auto" Width="auto" Orientation="Vertical">
+                <Button x:Name="bStart" Content="Start" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="2" Click="bStart_Click"/>
+                <Button x:Name="bStop" Content="Stop" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="2" Click="bStop_Click"/>
+                <Button x:Name="bReset" Content="Reset" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="2" Click="bReset_Click"/>
+                <Button x:Name="Help" Content="Help" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="2"/>
+            </StackPanel>
+            
+            <TextBox Grid.Row="0"  Grid.Column="1" x:Name="tbServerOutput" Margin="10" TextWrapping="Wrap" Text="Output from server" ScrollViewer.CanContentScroll="True" IsReadOnly="True"/>
+        </Grid>
+    </Grid>
+</Window>
