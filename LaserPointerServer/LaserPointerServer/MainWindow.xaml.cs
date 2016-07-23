@@ -1,21 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace LaserPointerServer
 {
@@ -26,7 +16,7 @@ namespace LaserPointerServer
     {
         private MessageListener messageListener;
         String addressString;
-        CancellationTokenSource cancellationSource;
+        CancellationTokenSource cancellationSource;        
 
         public MainWindow()
         {            
@@ -47,6 +37,7 @@ namespace LaserPointerServer
             tbServerOutput.Text += "Screen set to " + width + "x" + height;
 
             bStop.IsEnabled = false;
+            bReset.IsEnabled = false;
 
             KeyboardAndMouseSender sender = new KeyboardAndMouseSender();
             messageListener = new MessageListener(addressString, width, height, sender);            
@@ -55,6 +46,7 @@ namespace LaserPointerServer
         private async void bStart_Click(object sender, EventArgs e)
         {
             bStart.IsEnabled = false;
+            bReset.IsEnabled = true;
             bStop.IsEnabled = true;
             cancellationSource.Dispose();
             cancellationSource = new CancellationTokenSource();
@@ -65,13 +57,18 @@ namespace LaserPointerServer
                                         TaskCreationOptions.LongRunning);
             tbServerOutput.Text += "\nfinished";
             bStart.IsEnabled = true;
+            bStop.IsEnabled = false;
+            bReset.IsEnabled = false;
         }
 
+        /**
+        Sends a message to cancel and keys or buttons that might be down then cancels.  Waits for message back.
+        */
         private void bStop_Click(object sender, RoutedEventArgs e)
         {
+            messageListener.Reset();
             messageListener.Cancel();
             cancellationSource.Cancel();
-            bStop.IsEnabled = false;
         }
 
         private void bReset_Click(object sender, RoutedEventArgs e)
