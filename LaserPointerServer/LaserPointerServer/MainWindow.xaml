@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:LaserPointerServer"
         mc:Ignorable="d"
         Title="Laser Pointer Server" 
-        Height="200" Width="320">
+        Height="200" Width="320"
+        Icon="Drawing2.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

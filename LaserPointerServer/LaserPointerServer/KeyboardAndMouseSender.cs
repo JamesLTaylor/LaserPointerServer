@@ -31,14 +31,12 @@ namespace LaserPointerServer
         private byte VK_NEXT = 0x22;
         private byte VK_PRIOR = 0x21;
 
-        public void SetCursor(uint x, uint y) {
+        public void SetCursor(uint x, uint y, bool mouseLeftDown) {
             SetCursorPos(x, y);
-        }
-
-        public void SetCursorLeftDown(uint x, uint y)
-        {
-            SetCursorPos(x, y);
-            mouse_event(MOUSEEVENTF_LEFTDOWN, x, y, 0, IntPtr.Zero);
+            if (mouseLeftDown)
+            {
+                mouse_event(MOUSEEVENTF_LEFTDOWN, x, y, 0, IntPtr.Zero);
+            }
         }
 
         public void SetCursorLeftUp(uint x, uint y)
