@@ -56,7 +56,8 @@ namespace LaserPointerServer
             {
                 String message = socket.ReceiveFrameString();
                 if (message.Equals("q"))
-                {                    
+                {
+                    socket.SendFrame("quitting");
                     break;
                 }
                 else if (message[0] == 45 || (message[0] >= 48 && message[0] <= 57))

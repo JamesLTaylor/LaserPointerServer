@@ -70,7 +70,8 @@ namespace LaserPointerServer
         private void bStop_Click(object sender, RoutedEventArgs e)
         {
             messageListener.Cancel();
-            cancellationSource.Cancel();           
+            cancellationSource.Cancel();
+            bStop.IsEnabled = false;
         }
 
         private void bReset_Click(object sender, RoutedEventArgs e)
